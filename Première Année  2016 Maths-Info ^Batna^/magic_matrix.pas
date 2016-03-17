@@ -7,17 +7,21 @@ var arr : array[1..SIZE] of array[1..SIZE] of integer;
 
 
 begin
+    (* reading matrix values *)
     writeln('Enter values: ');
     for i := 1 to SIZE do
         for j := 1 to SIZE do
             read(arr[i][j]);
 
+    (* printing matix values *)
     writeln('Matrix:');
     for i := 1 to SIZE do begin
         for j := 1 to SIZE do
             write(arr[i][j], ' ');
         writeln;
     end;
+
+    (* checking if the matrix is a magic matrix *)
     dl := 0;
     dr := 0;
     sum := -1;
@@ -26,7 +30,7 @@ begin
         r := 0;
         c := 0;
         dl += arr[i][i];
-        dr += arr[i][SIZE - i];
+        dr += arr[i][SIZE - i + 1];
         for j := 1 to SIZE do begin
             r += arr[i][j];
             c += arr[j][i];
@@ -38,6 +42,7 @@ begin
         end;
     end;
 
+    (* printing the result *)
     if (magic = true) and (dl = dr) and (dr = sum) then
         writeln('Is a magic matrix.')
     else
