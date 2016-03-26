@@ -1,114 +1,122 @@
 #include <stdio.h>
+#include <math.h>
 #define true 1
 #define false 0
 #define MAX_SIZE 5
 
-void readArray(int tab[], int size) {
+void readArray(double arr[], int size) {
+    // fill array with values from the stdin
     int i;
     for (i = 0; i < size;i++)
-        scanf("%d", &tab[i]);
+        scanf("%lf", &arr[i]);
 }
 
-//affichage:
-void printArray(int tab[], int size) {
+void printArray(double arr[], int size) {
+    // print array elements to the stdout
     int i;
     for (i = 0; i < size; i++)
-        printf("%d ", tab[i]);
+        printf("%.2f ", arr[i]);
     printf("\n");
 }
 
-int min(int tab[], int size) {
-    // return the index of the smalist element.
+int min(double arr[], int size) {
+    // return the index of the smallest element.
     int min = 0,
         i;
     for (i = 1; i < size; i++)
-        if (tab[i] < tab[min])
+        if (arr[i] < arr[min])
             min = i;
     return min;
 }
 
-int max(int tab[], int size) {
+int max(double arr[], int size) {
     // return the index of the largest element.
     int max = 0,
         i;
     for (i = 0; i< size; i++)
-        if (tab[max] < tab[i])
+        if (arr[max] < arr[i])
             max = i;
     return max;
 }
 
-float average(int tab[], int size) {
-    float sum = 0;
+double average(double arr[], int size) {
+    // return the average of all the elements.
+    double sum = 0;
     int i;
     for (i = 0; i < size; i++)
-        sum += tab[i];
+        sum += arr[i];
     return (sum / size);
 }
 
-int aboveAverage(int tab[], int size){
+int aboveAverage(double arr[], int size){
     // return the number of elements above average.
     int counter = 0,
         i;
-    int s = average(tab, size);
+    double s = average(arr, size);
     for (i = 0; i < size; i++)
-        if(tab[i] > s)
+        if(arr[i] > s)
             counter += 1;
     return counter;
 }
 
-int find(int value, int tab[], int size){
+int find(double value, double arr[], int size){
+    // return true (1) if value is found, false (0) otherways.
     int i;
     for (i = 0; i < size; i++)
-        if (tab[i] == value) 
+        if (arr[i] == value) 
             return true;
     return false;
 }
 
-int occurrences(int value, int tab[], int size){
+int occurrences(double value, double arr[], int size){
+    // return the number of occurrences of value in arr[].
     int counter = 0,
         i;
     for (i = 0; i < size; i++)
-        if (tab[i] == value)
+        if (arr[i] == value)
             ++counter;
     return counter;
 }
 
-int pairs(int tab[], int size) {
+int pairs(double arr[], int size) {
+    // return number of pairs in arr[].
     int i, counter = 0;
     for (i = 0; i < size; ++i)
-        if (tab[i] % 2 == 0)
+        if (fmod(arr[i], 2) == 0)
             ++counter;
     return counter;
 }
 
-float unpairsAverage(int tab[], int size) {
+double unpairsAverage(double arr[], int size) {
+    // return the average of all unpair elements.
     int i, counter = 0;
     float sum = 0;
     for (i = 0; i < size; ++i)
-        if (tab[i] % 2 != 0) {
-            sum += tab[i];
+        if (fmod(arr[i], 2) != 0) {
+            sum += arr[i];
             ++counter;
         }
     return (sum / counter);
 }
 
-void reverse(int tab[], int size) {
+void reverse(double arr[], int size) {
+    // reverse arr[] inplace.
     int i, j;
-    int tmp;
+    double tmp;
     for (i = 0, j = size - 1; i < j; ++i, --j) {
-        tmp = tab[i];
-        tab[i] = tab[j];
-        tab[j] = tmp;
+        tmp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = tmp;
     }
 }
 
-int removeFives(int tab[], int size) {
-    // remove all mutiplicators of 5, return new size
+int removeFives(double arr[], int size) {
+    // remove all mutiplicators of 5, returns new size
     int j = 0,
         i = 0;
     for (i = 0, j = 0; j < size; ++j)
-        if (tab[j] % 5 != 0) {
-            tab[i] = tab[j];
+        if (fmod(arr[j], 5) != 0) {
+            arr[i] = arr[j];
             ++i;
         }
     return i;
@@ -119,8 +127,8 @@ void sep() { printf("%s\n", "---------------------------------------"); }
 
 int main() {
     int choice = 14, 
-        size = MAX_SIZE,
-        t[size];
+        size = MAX_SIZE;
+    double t[size];
     do{
         // main menu
         printf(
@@ -135,9 +143,9 @@ int main() {
         "7  Vérifier si un valeur exists dans le tableau\n"
         "8  Nombre apparition d'une valeur dans le tableau\n"
         "9  Valeur paires du tableau\n"
-        "10 Moyenne des element impairs du tableaun\n"
+        "10 Moyenne des element impairs du arrleaun\n"
         "11 Inverser les element de tableau\n"
-        "12 Effacer tout les mul de 5 du tableu\n"
+        "12 Effacer tout les mul de 5 du tableau\n"
         "13 Quitter\n"
         );
 
@@ -162,14 +170,14 @@ int main() {
             case 3: {   // print min
                 int m = min(t, size);
                 sep();
-                printf("Min index: %d, Min value: %.d\n", m, t[m]);
+                printf("Min index: %d, Min value: %.2f\n", m, t[m]);
                 sep();
                 break;
             }
             case 4:{    // print max
                 int m = max(t, size);
                 sep();
-                printf("Max index: %d, Max value: %d\n", m, t[m]);
+                printf("Max index: %d, Max value: %.2f\n", m, t[m]);
                 sep();
                 break;
             }
@@ -193,11 +201,11 @@ int main() {
                 break;
             }
             case 8: {   // number of occurrences
-                int value;
+                double value;
                 printf("Enter value: ");
-                scanf("%d", &value);
+                scanf("%lf", &value);
                 sep();
-                printf("Value %d occurred %d time(s)!\n", value, occurrences(value, t, size));
+                printf("Value %.f occurred %d time(s)!\n", value, occurrences(value, t, size));
                 sep();
                 break;
             }
