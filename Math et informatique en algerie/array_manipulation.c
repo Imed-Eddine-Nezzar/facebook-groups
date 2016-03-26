@@ -132,21 +132,21 @@ int main() {
     do{
         // main menu
         printf(
-        "\n\nchoisir un operations avec sa numero\n"
+        "\n\nArray manipulation:\n"
         "=================================\n"
-        "1  Lire le tableau\n"
-        "2  Affichier le tableau\n"
-        "3  Affiche Min\n"
-        "4  Affiche Max\n"
-        "5  Affichier le moyenne\n"
-        "6  Determener si un valeur > moyenne\n"
-        "7  Vérifier si un valeur exists dans le tableau\n"
-        "8  Nombre apparition d'une valeur dans le tableau\n"
-        "9  Valeur paires du tableau\n"
-        "10 Moyenne des element impairs du arrleaun\n"
-        "11 Inverser les element de tableau\n"
-        "12 Effacer tout les mul de 5 du tableau\n"
-        "13 Quitter\n"
+        "1.  Read array.\n"
+        "2.  Print array.\n"
+        "3.  Print Min\n"
+        "4.  Print Max\n"
+        "5.  Print average\n"
+        "6.  Print number of values above average\n"
+        "7.  Find value in array\n"
+        "8.  Count number of occurrences of value in array\n"
+        "9.  Count pairs in array\n"
+        "10. Average of unpair values in array\n"
+        "11. Reverse array elements inplace\n"
+        "12. Remove values dividable by 5 from array\n"
+        "13. Quit\n"
         );
 
         // getting choice
