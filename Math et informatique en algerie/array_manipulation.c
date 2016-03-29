@@ -2,7 +2,7 @@
 #include <math.h>
 #define true 1
 #define false 0
-#define MAX_SIZE 5
+#define MAX_SIZE 100
 
 void readArray(double arr[], int size) {
     // fill array with values from the stdin
@@ -127,8 +127,8 @@ void sep() { printf("%s\n", "---------------------------------------"); }
 
 int main() {
     int choice = 14, 
-        size = MAX_SIZE;
-    double t[size];
+        size;
+    double t[MAX_SIZE];
     do{
         // main menu
         printf(
@@ -157,6 +157,8 @@ int main() {
         switch (choice) {
             case 1:     // read array
                 sep();
+                printf("Enter array size: ");
+                scanf("%d", &size);
                 printf("Enter array elments: ");
                 readArray(t, size);
                 sep();
