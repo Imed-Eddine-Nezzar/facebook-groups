@@ -7,9 +7,9 @@ class MoneyDecomposer {
         /*
          *  Decompose money into coins repetitions.
          */
-        int[] coin_repetitions = new int[10];
+        int[] coin_repetitions = new int[coins.length];
 
-        for (int coin = 0; coin < 10 && money > 0; ++coin) {
+        for (int coin = 0; coin < coins.length && money > 0; ++coin) {
             while (money - coins[coin] >= 0) {
                 money -= coins[coin];
                 coin_repetitions[coin] += 1;
