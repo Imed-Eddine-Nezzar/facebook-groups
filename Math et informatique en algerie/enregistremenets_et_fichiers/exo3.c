@@ -39,5 +39,9 @@ int main() {
 
     print_point(c);
 
+    distroy_point(a);
+    distroy_point(b);
+    distroy_point(c);
+
     return 0;
 }
