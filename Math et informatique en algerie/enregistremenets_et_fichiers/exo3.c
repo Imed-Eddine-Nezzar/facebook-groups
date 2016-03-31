@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 // Point definition from "exo2.c"
 typedef struct Point { double x, y; } Point;
@@ -39,9 +40,9 @@ int main() {
 
     print_point(c);
 
-    distroy_point(a);
-    distroy_point(b);
-    distroy_point(c);
+    destroy_point(a);
+    destroy_point(b);
+    destroy_point(c);
 
     return 0;
 }
